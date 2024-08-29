@@ -9,7 +9,20 @@
 
 </div>
 
-English| [简体中文](./README-zh.md)
+# claira-libor-ui Integration
+
+This library is used in `claira-libor-ui` frontend. Currently, the JSDelivr UMD version is simply included in the public folder.
+See the Usage chapter below for specific files and links.
+
+Trying to build this library via `npm run build` and include that instead will currently result in various bugs.
+
+Since they need to be worked on, switching Luckysheet integration from UMD to build version is currently a TODO item.
+
+Using the minified UMD build poses a problem of having to edit the minified code whenever you need to fix
+a bug in library code. Generally, it's possible to debug by building this repository with `npm run build`, replacing the currently
+used UMD build in `claira-libor-ui/public/luckysheet` with the built artifact (purely for debugging since replacing it permanently will result in
+the abode mentioned various bugs), and debugging the built artifact with the advantage of sourcemaps, while
+keeping in mind that the built artifact is not a drop-in replacement for the currently used UMD build.
 
 # Luckysheet is no longer maintained, please use [Univer](https://github.com/dream-num/univer) instead!
 
