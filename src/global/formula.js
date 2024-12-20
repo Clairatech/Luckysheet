@@ -1172,6 +1172,15 @@ const luckysheetformula = {
         _this.searchFunctionPosition($("#luckysheet-formula-help-c"), $c, offset.left, offset.top, true);
     },
     helpFunctionExe: function($editer, currSelection) {
+
+        // CLAIR-6390 bugfix
+        // Paired with managing the global flag from client code, suppresses the bug where closing the help window causes
+        // the formula editor to lose focus and exit the edit mode.
+        if (window.SUPPRESS_LUCKYSHEET_HELP) {
+            return;
+        };
+        // End of CLAIR-6390
+
         let _this = this;
         let functionlist = Store.functionlist;
         let _locale = locale();

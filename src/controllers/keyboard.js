@@ -237,7 +237,9 @@ function formulaMoveEvent(dir, ctrlKey, shiftKey, event){
                 }
             }
             else if(dir == 'right'){
-                if(anchor.parent().is("span") && anchor.parent().next().length == 0 && anchorOffset > 0){
+                // CLAIR-6232 bugfix for cursor leaving the caret too early if you're one symbol from the end of text.
+                // Corresponds to UMD implementation of `C.parent().next().length&&T>=C.context.length`
+                if(anchor.parent().is("span") && anchor.parent().next().length == 0 && anchorOffset > anchor.context.length){
                     formula.updatecell(Store.luckysheetCellUpdate[0], Store.luckysheetCellUpdate[1]);
                     luckysheetMoveHighlightCell("right", 1, "rangeOfSelect");
 
